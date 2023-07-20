@@ -1,0 +1,463 @@
+使用之前保存的环境即可
+
+
+cd /mnt/PyCharm_Project_1/RDANN-FND
+
+cd src
+
+
+nohup python -u RDANN.py > /mnt/PyCharm_Project_1/log/run.log 2>&1 &
+
+ps aux
+
+
+nohup python -u BDANN_weibo.py > /mnt/PyCharm_Project_1/log/run.log 2>&1 &
+
+ps aux
+
+kill -STOP pid   # 暂停正在运行的进程
+kill -CONT pid   # 恢复暂停运行的进程
+kill -9 pid      # 强制停止运行中的进程
+
+kill -2977 pid   
+
+kill -9 pid 2977
+
+current environment：预装：Ubuntu 18.04, Python3.8, 
+CUDA 10.1, cuDNN 7.6, Pytorch 1.5.0, NVCC, VNC
+
+NVIDIA GeForce RTX 2080 Ti
+
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+pip install /mnt/PyCharm_Project_1/torch-1.4.0-cp38-cp38-linux_x86_64.whl
+
+pip install /mnt/PyCharm_Project_1/torchvision-0.5.0-cp38-cp38-linux_x86_64.whl
+
+
+pip install scikit-learn
+
+pip install jieba
+
+pip install transformers==3.4.0
+
+python preprocess_dataset.py
+
+python RDANN.py
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4
+
+
+conda install -c conda-forge pytorch==1.4.0 torchvision==0.6.0 cudatoolkit=10.1 -c pytorch
+
+
+
+
+
+
+
+# CUDA 10.1
+###不行了conda install pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch
+conda install pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch
+conda install pytorch==1.4.0  cudatoolkit=10.1 -c pytorch
+这其中torchvision==0.5.0可能安装不了
+
+conda install pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 pytorch
+
+！！！！！！！！！！！！！！！！！！！使用如下安装
+conda config --remove-key channels
+conda install pytorch==1.4.0  cudatoolkit=10.1 -c pytorch
+
+！！！！！！！！！！！！！！！！！！！！！！！！使用如上安装
+
+torchvision==0.5.0
+
+###用这个安装
+
+pip install /mnt/PyCharm_Project_1/torchvision-0.5.0-cp37-cp37m-win_amd64.whl
+
+
+
+
+
+
+
+cd /mnt/PyCharm_Project_1/RDANN-FND
+
+cd src
+
+
+
+pip install scikit-learn
+
+pip install jieba
+
+pip install transformers==3.4.0
+
+pip install numpy==1.20.3
+
+
+pip install pandas
+
+pip install matplotlib
+
+
+pip install protobuf==3.20.2
+
+
+python BDANN_weibo.py
+
+python preprocess_dataset.py
+python RDANN.py
+python process_data_weibo2.py
+
+
+python process_data_weibo_5_fold.py
+
+python BDANN_weibo_5_fold.py
+
+
+
+(myconda) root@w2l1AA:/mnt/PyCharm_Project_1/BDANN-IJCNN2020-main/src# python BDANN_weibo.py
+/root/miniconda3/envs/myconda/lib/python3.8/site-packages/transformers/generation_utils.py:24: FutureWarning: Importing `GenerationMixin` from `src/transformers/generation_utils.py` is deprecated and will be removed in Transformers v5. Import as `from transformers import GenerationMixin` instead.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/root/miniconda3/envs/myconda/lib/python3.8/site-packages/transformers/utils/import_utils.py", line 1110, in _get_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/root/miniconda3/envs/myconda/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/root/miniconda3/envs/myconda/lib/python3.8/site-packages/transformers/models/decision_transformer/modeling_decision_transformer.py", line 25, in <module>
+    from torch.cuda.amp import autocast
+ImportError: cannot import name 'autocast' from 'torch.cuda.amp' (/root/miniconda3/envs/myconda/lib/python3.8/site-packages/torch/cuda/amp/__init__.py)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "BDANN_weibo.py", line 22, in <module>
+    from transformers import *
+  File "<frozen importlib._bootstrap>", line 1037, in _handle_fromlist
+  File "<frozen importlib._bootstrap>", line 1039, in _handle_fromlist
+  File "/root/miniconda3/envs/myconda/lib/python3.8/site-packages/transformers/utils/import_utils.py", line 1101, in __getattr__
+    value = getattr(module, name)
+  File "/root/miniconda3/envs/myconda/lib/python3.8/site-packages/transformers/utils/import_utils.py", line 1100, in __getattr__
+    module = self._get_module(self._class_to_module[name])
+  File "/root/miniconda3/envs/myconda/lib/python3.8/site-packages/transformers/utils/import_utils.py", line 1112, in _get_module
+    raise RuntimeError(
+RuntimeError: Failed to import transformers.models.decision_transformer.modeling_decision_transformer because of the following error (look up to see its traceback):
+cannot import name 'autocast' from 'torch.cuda.amp' (/root/miniconda3/envs/myconda/lib/python3.8/site-packages/torch/cuda/amp/__init__.py)
+(myconda) root@w2l1AA:/mnt/PyCharm_Project_1/BDANN-IJCNN2020-main/src# 
+
+
+
+
+
+
+
+
+
+
+(myconda) root@wJzvgp:~# cd /mnt/PyCharm_Project_1/BDANN-IJCNN2020-main
+(myconda) root@wJzvgp:/mnt/PyCharm_Project_1/BDANN-IJCNN2020-main# cd src
+(myconda) root@wJzvgp:/mnt/PyCharm_Project_1/BDANN-IJCNN2020-main/src# python BDANN_weibo.py
+loading data
+Text and image
+image length 13274
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 1.038 seconds.
+Prefix dict has been built successfully.
+Original post length is 5190
+Original data frame is (5190, 6)
+Label number is 5190
+Rummor number is 2773
+Non rummor is 2417
+data size is 5190
+paired post length is 5190
+paried data has 8 dimension
+Original post length is 819
+Original data frame is (819, 6)
+Label number is 819
+Rummor number is 441
+Non rummor is 378
+data size is 819
+paired post length is 819
+paried data has 8 dimension
+Original post length is 1374
+Original data frame is (1374, 6)
+Label number is 1374
+Rummor number is 723
+Non rummor is 651
+data size is 1374
+paired post length is 1374
+paried data has 8 dimension
+TEXT: 5190, Image: 5190, labe: 5190, Event: 5190
+TEXT: 819, Image: 819, labe: 819, Event: 819
+TEXT: 1374, Image: 1374, labe: 1374, Event: 1374
+building model
+CUDA
+loader size 163
+training model
+Traceback (most recent call last):
+  File "BDANN_weibo.py", line 509, in <module>
+    main(args)
+  File "BDANN_weibo.py", line 270, in main
+    class_outputs, domain_outputs = model(train_text, train_image, train_mask)
+  File "/root/miniconda3/envs/myconda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 550, in __call__
+    result = self.forward(*input, **kwargs)
+  File "BDANN_weibo.py", line 143, in forward
+    reverse_feature = grad_reverse(text_image)
+  File "BDANN_weibo.py", line 60, in grad_reverse
+    return ReverseLayerF()(x)
+  File "/root/miniconda3/envs/myconda/lib/python3.8/site-packages/torch/autograd/function.py", line 144, in __call__
+    raise RuntimeError(
+RuntimeError: Legacy autograd function with non-static forward method is deprecated. Please use new-style autograd function with static forward method. (Example: https://pytorch.org/do
+(myconda) root@wJzvgp:/mnt/PyCharm_Project_1/BDANN-IJCNN2020-main/src# python BDANN_weibo.py
+loading datatograd.html#torch.autograd.Function)
+Text and image
+
+
+
+
+
+
+
+
+
+
+
+
+成功记录：
+
+(myconda) root@ZDVB3v:~# cd /mnt/PyCharm_Project_1/BDANN-IJCNN2020-main
+(myconda) root@ZDVB3v:/mnt/PyCharm_Project_1/BDANN-IJCNN2020-main# cd src
+(myconda) root@ZDVB3v:/mnt/PyCharm_Project_1/BDANN-IJCNN2020-main/src# python BDANN_weibo.py
+loading data
+Text and image
+image length 13274
+Building prefix dict from the default dictionary ...
+Dumping model to file cache /tmp/jieba.cache
+Loading model cost 0.877 seconds.
+Prefix dict has been built successfully.
+Original post length is 5190
+Original data frame is (5190, 6)
+Label number is 5190
+Rummor number is 2773
+Non rummor is 2417
+data size is 5190
+paired post length is 5190
+paried data has 8 dimension
+Original post length is 819
+Original data frame is (819, 6)
+Label number is 819
+Rummor number is 441
+Non rummor is 378
+data size is 819
+paired post length is 819
+paried data has 8 dimension
+Original post length is 1374
+Original data frame is (1374, 6)
+Label number is 1374
+Rummor number is 723
+Non rummor is 651
+data size is 1374
+paired post length is 1374
+paried data has 8 dimension
+Downloading: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 110k/110k [00:06<00:00, 16.6kB/s]
+TEXT: 5190, Image: 5190, labe: 5190, Event: 5190
+TEXT: 819, Image: 819, labe: 819, Event: 819
+TEXT: 1374, Image: 1374, labe: 1374, Event: 1374
+building model
+Downloading: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 624/624 [00:00<00:00, 2.53kB/s]
+Downloading: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 412M/412M [02:01<00:00, 3.40MB/s]
+Downloading: "https://download.pytorch.org/models/vgg19-dcbb9e9d.pth" to /root/.cache/torch/checkpoints/vgg19-dcbb9e9d.pth
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 548M/548M [03:57<00:00, 2.42MB/s]
+CUDA
+loader size 163
+training model
+Epoch [1/100],  Loss: -1.7223, Class Loss: 0.6261, domain loss: 2.3484, Train_Acc: 0.6859,  Validate_Acc: 0.6612.
+Epoch [2/100],  Loss: -1.8823, Class Loss: 0.5449, domain loss: 2.4272, Train_Acc: 0.7815,  Validate_Acc: 0.6951.
+Epoch [3/100],  Loss: -1.9606, Class Loss: 0.4893, domain loss: 2.4499, Train_Acc: 0.8251,  Validate_Acc: 0.7143.
+Epoch [4/100],  Loss: -1.9806, Class Loss: 0.4695, domain loss: 2.4500, Train_Acc: 0.8413,  Validate_Acc: 0.7812.
+Epoch [5/100],  Loss: -1.9924, Class Loss: 0.4576, domain loss: 2.4500, Train_Acc: 0.8571,  Validate_Acc: 0.7844.
+Epoch [6/100],  Loss: -1.9994, Class Loss: 0.4506, domain loss: 2.4500, Train_Acc: 0.8609,  Validate_Acc: 0.8124.
+Epoch [7/100],  Loss: -2.0029, Class Loss: 0.4471, domain loss: 2.4500, Train_Acc: 0.8645,  Validate_Acc: 0.8097.
+Epoch [8/100],  Loss: -2.0132, Class Loss: 0.4360, domain loss: 2.4492, Train_Acc: 0.8763,  Validate_Acc: 0.7588.
+Epoch [9/100],  Loss: -2.0148, Class Loss: 0.4352, domain loss: 2.4500, Train_Acc: 0.8790,  Validate_Acc: 0.7396.
+Epoch [10/100],  Loss: -2.0228, Class Loss: 0.4272, domain loss: 2.4500, Train_Acc: 0.8850,  Validate_Acc: 0.8373.
+Epoch [11/100],  Loss: -2.0240, Class Loss: 0.4260, domain loss: 2.4500, Train_Acc: 0.8855,  Validate_Acc: 0.8365.
+Epoch [12/100],  Loss: -2.0251, Class Loss: 0.4250, domain loss: 2.4500, Train_Acc: 0.8861,  Validate_Acc: 0.7876.
+Epoch [13/100],  Loss: -2.0323, Class Loss: 0.4177, domain loss: 2.4500, Train_Acc: 0.8965,  Validate_Acc: 0.8417.
+Epoch [14/100],  Loss: -2.0349, Class Loss: 0.4152, domain loss: 2.4500, Train_Acc: 0.8995,  Validate_Acc: 0.8007.
+Epoch [15/100],  Loss: -2.0350, Class Loss: 0.4150, domain loss: 2.4500, Train_Acc: 0.8985,  Validate_Acc: 0.8145.
+Epoch [16/100],  Loss: -2.0402, Class Loss: 0.4099, domain loss: 2.4500, Train_Acc: 0.9030,  Validate_Acc: 0.7888.
+Epoch [17/100],  Loss: -2.0382, Class Loss: 0.4118, domain loss: 2.4500, Train_Acc: 0.9011,  Validate_Acc: 0.8408.
+Epoch [18/100],  Loss: -2.0384, Class Loss: 0.4117, domain loss: 2.4500, Train_Acc: 0.8991,  Validate_Acc: 0.8412.
+Epoch [19/100],  Loss: -2.0427, Class Loss: 0.4073, domain loss: 2.4500, Train_Acc: 0.9051,  Validate_Acc: 0.8517.
+Epoch [20/100],  Loss: -2.0452, Class Loss: 0.4049, domain loss: 2.4500, Train_Acc: 0.9081,  Validate_Acc: 0.8357.
+Epoch [21/100],  Loss: -2.0428, Class Loss: 0.4072, domain loss: 2.4500, Train_Acc: 0.9034,  Validate_Acc: 0.8577.
+Epoch [22/100],  Loss: -2.0459, Class Loss: 0.4041, domain loss: 2.4500, Train_Acc: 0.9068,  Validate_Acc: 0.8477.
+Epoch [23/100],  Loss: -2.0456, Class Loss: 0.4044, domain loss: 2.4500, Train_Acc: 0.9087,  Validate_Acc: 0.8209.
+Epoch [24/100],  Loss: -2.0400, Class Loss: 0.4092, domain loss: 2.4492, Train_Acc: 0.8997,  Validate_Acc: 0.8417.
+Epoch [25/100],  Loss: -2.0472, Class Loss: 0.4028, domain loss: 2.4500, Train_Acc: 0.9082,  Validate_Acc: 0.8589.
+Epoch [26/100],  Loss: -2.0483, Class Loss: 0.4018, domain loss: 2.4500, Train_Acc: 0.9096,  Validate_Acc: 0.8525.
+Epoch [27/100],  Loss: -2.0451, Class Loss: 0.4049, domain loss: 2.4500, Train_Acc: 0.9061,  Validate_Acc: 0.8613.
+Epoch [28/100],  Loss: -2.0541, Class Loss: 0.3959, domain loss: 2.4500, Train_Acc: 0.9147,  Validate_Acc: 0.8392.
+Epoch [29/100],  Loss: -2.0498, Class Loss: 0.4002, domain loss: 2.4500, Train_Acc: 0.9116,  Validate_Acc: 0.7973.
+Epoch [30/100],  Loss: -2.0466, Class Loss: 0.4034, domain loss: 2.4500, Train_Acc: 0.9022,  Validate_Acc: 0.8565.
+Epoch [31/100],  Loss: -2.0492, Class Loss: 0.4008, domain loss: 2.4500, Train_Acc: 0.9082,  Validate_Acc: 0.8116.
+Epoch [32/100],  Loss: -2.0497, Class Loss: 0.4003, domain loss: 2.4500, Train_Acc: 0.9102,  Validate_Acc: 0.8497.
+Epoch [33/100],  Loss: -2.0511, Class Loss: 0.3989, domain loss: 2.4500, Train_Acc: 0.9131,  Validate_Acc: 0.8381.
+Epoch [34/100],  Loss: -2.0514, Class Loss: 0.3986, domain loss: 2.4500, Train_Acc: 0.9117,  Validate_Acc: 0.8316.
+Epoch [35/100],  Loss: -2.0531, Class Loss: 0.3970, domain loss: 2.4500, Train_Acc: 0.9144,  Validate_Acc: 0.8292.
+Epoch [36/100],  Loss: -2.0535, Class Loss: 0.3965, domain loss: 2.4500, Train_Acc: 0.9147,  Validate_Acc: 0.8233.
+Epoch [37/100],  Loss: -2.0628, Class Loss: 0.3872, domain loss: 2.4500, Train_Acc: 0.9256,  Validate_Acc: 0.8544.
+Epoch [38/100],  Loss: -2.0536, Class Loss: 0.3956, domain loss: 2.4492, Train_Acc: 0.9137,  Validate_Acc: 0.8653.
+Epoch [39/100],  Loss: -2.0555, Class Loss: 0.3945, domain loss: 2.4500, Train_Acc: 0.9152,  Validate_Acc: 0.8653.
+Epoch [40/100],  Loss: -2.0623, Class Loss: 0.3877, domain loss: 2.4500, Train_Acc: 0.9243,  Validate_Acc: 0.8461.
+Epoch [41/100],  Loss: -2.0596, Class Loss: 0.3896, domain loss: 2.4492, Train_Acc: 0.9222,  Validate_Acc: 0.8445.
+Epoch [42/100],  Loss: -2.0600, Class Loss: 0.3901, domain loss: 2.4500, Train_Acc: 0.9222,  Validate_Acc: 0.8553.
+Epoch [43/100],  Loss: -2.0585, Class Loss: 0.3915, domain loss: 2.4500, Train_Acc: 0.9191,  Validate_Acc: 0.8601.
+Epoch [44/100],  Loss: -2.0624, Class Loss: 0.3876, domain loss: 2.4500, Train_Acc: 0.9225,  Validate_Acc: 0.8012.
+Epoch [45/100],  Loss: -2.0603, Class Loss: 0.3898, domain loss: 2.4500, Train_Acc: 0.9221,  Validate_Acc: 0.8172.
+Epoch [46/100],  Loss: -2.0664, Class Loss: 0.3837, domain loss: 2.4500, Train_Acc: 0.9268,  Validate_Acc: 0.8661.
+Epoch [47/100],  Loss: -2.0649, Class Loss: 0.3851, domain loss: 2.4500, Train_Acc: 0.9263,  Validate_Acc: 0.8408.
+Epoch [48/100],  Loss: -2.0639, Class Loss: 0.3861, domain loss: 2.4500, Train_Acc: 0.9239,  Validate_Acc: 0.8401.
+Epoch [49/100],  Loss: -2.0613, Class Loss: 0.3888, domain loss: 2.4500, Train_Acc: 0.9227,  Validate_Acc: 0.8577.
+Epoch [50/100],  Loss: -2.0639, Class Loss: 0.3861, domain loss: 2.4500, Train_Acc: 0.9250,  Validate_Acc: 0.8269.
+Epoch [51/100],  Loss: -2.0647, Class Loss: 0.3854, domain loss: 2.4500, Train_Acc: 0.9266,  Validate_Acc: 0.8465.
+Epoch [52/100],  Loss: -2.0606, Class Loss: 0.3894, domain loss: 2.4500, Train_Acc: 0.9198,  Validate_Acc: 0.8229.
+Epoch [53/100],  Loss: -2.0665, Class Loss: 0.3836, domain loss: 2.4500, Train_Acc: 0.9286,  Validate_Acc: 0.8605.
+Epoch [54/100],  Loss: -2.0634, Class Loss: 0.3866, domain loss: 2.4500, Train_Acc: 0.9243,  Validate_Acc: 0.8040.
+Epoch [55/100],  Loss: -2.0639, Class Loss: 0.3861, domain loss: 2.4500, Train_Acc: 0.9239,  Validate_Acc: 0.8441.
+Epoch [56/100],  Loss: -2.0704, Class Loss: 0.3796, domain loss: 2.4500, Train_Acc: 0.9325,  Validate_Acc: 0.8493.
+Epoch [57/100],  Loss: -2.0691, Class Loss: 0.3801, domain loss: 2.4492, Train_Acc: 0.9304,  Validate_Acc: 0.8372.
+Epoch [58/100],  Loss: -2.0663, Class Loss: 0.3838, domain loss: 2.4500, Train_Acc: 0.9277,  Validate_Acc: 0.8052.
+Epoch [59/100],  Loss: -2.0633, Class Loss: 0.3867, domain loss: 2.4500, Train_Acc: 0.9236,  Validate_Acc: 0.8245.
+Epoch [60/100],  Loss: -2.0634, Class Loss: 0.3866, domain loss: 2.4500, Train_Acc: 0.9259,  Validate_Acc: 0.8313.
+Epoch [61/100],  Loss: -2.0743, Class Loss: 0.3758, domain loss: 2.4500, Train_Acc: 0.9351,  Validate_Acc: 0.8245.
+Epoch [62/100],  Loss: -2.0739, Class Loss: 0.3753, domain loss: 2.4492, Train_Acc: 0.9365,  Validate_Acc: 0.8496.
+Epoch [63/100],  Loss: -2.0711, Class Loss: 0.3789, domain loss: 2.4500, Train_Acc: 0.9317,  Validate_Acc: 0.8277.
+Epoch [64/100],  Loss: -2.0705, Class Loss: 0.3795, domain loss: 2.4500, Train_Acc: 0.9339,  Validate_Acc: 0.8305.
+Epoch [65/100],  Loss: -2.0707, Class Loss: 0.3794, domain loss: 2.4500, Train_Acc: 0.9316,  Validate_Acc: 0.8305.
+Epoch [66/100],  Loss: -2.0669, Class Loss: 0.3831, domain loss: 2.4500, Train_Acc: 0.9273,  Validate_Acc: 0.8505.
+Epoch [67/100],  Loss: -2.0621, Class Loss: 0.3879, domain loss: 2.4500, Train_Acc: 0.9233,  Validate_Acc: 0.8520.
+Epoch [68/100],  Loss: -2.0737, Class Loss: 0.3763, domain loss: 2.4500, Train_Acc: 0.9373,  Validate_Acc: 0.8412.
+Epoch [69/100],  Loss: -2.0691, Class Loss: 0.3810, domain loss: 2.4500, Train_Acc: 0.9298,  Validate_Acc: 0.8412.
+Epoch [70/100],  Loss: -2.0757, Class Loss: 0.3743, domain loss: 2.4500, Train_Acc: 0.9379,  Validate_Acc: 0.8412.
+Epoch [71/100],  Loss: -2.0685, Class Loss: 0.3816, domain loss: 2.4500, Train_Acc: 0.9296,  Validate_Acc: 0.7976.
+Epoch [72/100],  Loss: -2.0743, Class Loss: 0.3757, domain loss: 2.4500, Train_Acc: 0.9350,  Validate_Acc: 0.8300.
+Epoch [73/100],  Loss: -2.0658, Class Loss: 0.3842, domain loss: 2.4500, Train_Acc: 0.9267,  Validate_Acc: 0.8088.
+Epoch [74/100],  Loss: -2.0700, Class Loss: 0.3800, domain loss: 2.4500, Train_Acc: 0.9311,  Validate_Acc: 0.8328.
+Epoch [75/100],  Loss: -2.0738, Class Loss: 0.3762, domain loss: 2.4500, Train_Acc: 0.9354,  Validate_Acc: 0.8417.
+Epoch [76/100],  Loss: -2.0736, Class Loss: 0.3764, domain loss: 2.4500, Train_Acc: 0.9342,  Validate_Acc: 0.8444.
+Epoch [77/100],  Loss: -2.0816, Class Loss: 0.3685, domain loss: 2.4500, Train_Acc: 0.9431,  Validate_Acc: 0.8513.
+Epoch [78/100],  Loss: -2.0739, Class Loss: 0.3762, domain loss: 2.4500, Train_Acc: 0.9356,  Validate_Acc: 0.8316.
+Epoch [79/100],  Loss: -2.0709, Class Loss: 0.3791, domain loss: 2.4500, Train_Acc: 0.9308,  Validate_Acc: 0.7896.
+Epoch [80/100],  Loss: -2.0709, Class Loss: 0.3791, domain loss: 2.4500, Train_Acc: 0.9321,  Validate_Acc: 0.8372.
+Epoch [81/100],  Loss: -2.0704, Class Loss: 0.3796, domain loss: 2.4500, Train_Acc: 0.9316,  Validate_Acc: 0.8272.
+Epoch [82/100],  Loss: -2.0730, Class Loss: 0.3770, domain loss: 2.4500, Train_Acc: 0.9348,  Validate_Acc: 0.8260.
+Epoch [83/100],  Loss: -2.0768, Class Loss: 0.3733, domain loss: 2.4500, Train_Acc: 0.9385,  Validate_Acc: 0.8124.
+Epoch [84/100],  Loss: -2.0775, Class Loss: 0.3726, domain loss: 2.4500, Train_Acc: 0.9377,  Validate_Acc: 0.8456.
+Epoch [85/100],  Loss: -2.0715, Class Loss: 0.3777, domain loss: 2.4492, Train_Acc: 0.9344,  Validate_Acc: 0.8489.
+Epoch [86/100],  Loss: -2.0740, Class Loss: 0.3760, domain loss: 2.4500, Train_Acc: 0.9358,  Validate_Acc: 0.8324.
+Epoch [87/100],  Loss: -2.0733, Class Loss: 0.3767, domain loss: 2.4500, Train_Acc: 0.9354,  Validate_Acc: 0.8473.
+Epoch [88/100],  Loss: -2.0736, Class Loss: 0.3764, domain loss: 2.4500, Train_Acc: 0.9337,  Validate_Acc: 0.8517.
+Epoch [89/100],  Loss: -2.0747, Class Loss: 0.3753, domain loss: 2.4500, Train_Acc: 0.9348,  Validate_Acc: 0.8112.
+Epoch [90/100],  Loss: -2.0759, Class Loss: 0.3742, domain loss: 2.4500, Train_Acc: 0.9369,  Validate_Acc: 0.8341.
+Epoch [91/100],  Loss: -2.0770, Class Loss: 0.3730, domain loss: 2.4500, Train_Acc: 0.9397,  Validate_Acc: 0.8104.
+Epoch [92/100],  Loss: -2.0823, Class Loss: 0.3678, domain loss: 2.4500, Train_Acc: 0.9454,  Validate_Acc: 0.8085.
+Epoch [93/100],  Loss: -2.0732, Class Loss: 0.3768, domain loss: 2.4500, Train_Acc: 0.9337,  Validate_Acc: 0.8448.
+Epoch [94/100],  Loss: -2.0784, Class Loss: 0.3716, domain loss: 2.4500, Train_Acc: 0.9397,  Validate_Acc: 0.8420.
+Epoch [95/100],  Loss: -2.0716, Class Loss: 0.3785, domain loss: 2.4500, Train_Acc: 0.9297,  Validate_Acc: 0.8220.
+Epoch [96/100],  Loss: -2.0774, Class Loss: 0.3727, domain loss: 2.4500, Train_Acc: 0.9375,  Validate_Acc: 0.8104.
+Epoch [97/100],  Loss: -2.0750, Class Loss: 0.3750, domain loss: 2.4500, Train_Acc: 0.9357,  Validate_Acc: 0.8224.
+Epoch [98/100],  Loss: -2.0734, Class Loss: 0.3767, domain loss: 2.4500, Train_Acc: 0.9330,  Validate_Acc: 0.8027.
+Epoch [99/100],  Loss: -2.0652, Class Loss: 0.3848, domain loss: 2.4500, Train_Acc: 0.9248,  Validate_Acc: 0.8444.
+Epoch [100/100],  Loss: -2.0762, Class Loss: 0.3739, domain loss: 2.4500, Train_Acc: 0.9387,  Validate_Acc: 0.8396.
+testing model
+Classification Acc: 0.8661, AUC-ROC: 0.9320
+Classification report:
+              precision    recall  f1-score   support
+
+           0       0.90      0.81      0.85       651
+           1       0.84      0.92      0.88       723
+
+    accuracy                           0.87      1374
+   macro avg       0.87      0.86      0.86      1374
+weighted avg       0.87      0.87      0.87      1374
+
+
+Classification confusion matrix:
+[[527 124]
+ [ 60 663]]
+
+(myconda) root@ZDVB3v:/mnt/PyCharm_Project_1/BDANN-IJCNN2020-main/src# 
+
+
+
+
+ # 修改代码的部分！！！！！！！！！！！！！！！
+    # 创建空字典存储各个指标的训练变化
+    metric_history = {"precision": [], "recall": [], "f1": []}
+
+    # 在训练循环中，每个epoch结束后记录相应的指标
+    for epoch in range(num_epochs):
+        # 在每个epoch结束后计算相应的指标，并记录到metric_history字典中
+        # 这里以precision为例，其他指标同理
+        precision = metrics.precision_score(test_true, test_pred, average='macro')
+        metric_history["precision"].append(precision)
+
+        # 计算并记录 recall
+        recall = metrics.recall_score(test_true, test_pred, average='macro')
+        metric_history["recall"].append(recall)
+
+        # 计算并记录 f1-score
+        f1 = metrics.f1_score(test_true, test_pred, average='macro')
+        metric_history["f1"].append(f1)
+
+    # 将各个指标的训练变化绘制成折线图
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(num_epochs), metric_history["precision"], label="precision")
+    plt.plot(range(num_epochs), metric_history["recall"], label="recall")
+    plt.plot(range(num_epochs), metric_history["f1"], label="f1-score")
+    plt.xlabel("epoch")
+    plt.ylabel("score")
+    plt.legend()
+    plt.savefig("/mnt/PyCharm_Project_1/BDANN-IJCNN2020-main/Data/weibo/picout")  # 将图像保存到指定路径
+    plt.show()  # 显示图像
+
+
+    引入MAE预训练模型对ViT 3D医学图像分类任务进行预训练，可以加速模型训练并提高精度。MAE是一种强大的自编码器，它可以从未标记的数据中学习特征表示，并且可以通过预训练来提高ViT的性能。
+
+    使用3D-CNN进行多模态医学图像特征提取，可以获得更加完整的空间信息。3D-CNN可以处理医学图像中的三维空间信息，并且可以提取更多的特征以改善分类性能。
+
+    改进的TransUNet医学图像分割模型。这个模型是基于Transformer和UNet的结合模型，能够对医学图像进行有效的分割。通过改进TransUNet模型，您可以提高分割的精度和速度。
+
+    多尺度top-hat变换提取细节的对比度增强算法用于图像预处理。这个算法可以有效地增强图像的对比度，同时保留重要的细节信息。这种预处理方法可以帮助改善模型的分类和分割性能。
+
+
+
+> conda config –add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+
+> conda config –add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+
+> conda config –add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+
+> conda config –add channels https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
+
+> conda config –add channels https://mirrors.ustc.edu.cn/anaconda/cloud/bioconda/
+
+> conda config –add channels https://mirrors.ustc.edu.cn/anaconda/cloud/menpo/
+
+> conda config –set show_channel_urls yes
+
